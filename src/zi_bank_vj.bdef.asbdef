@@ -1,0 +1,14 @@
+unmanaged implementation in class zbp_i_bank_vj unique;
+strict ( 2 );
+
+define behavior for zi_bank_vj //alias <alias_name>
+lock master
+authorization master ( instance )
+
+{
+  create;
+  update;
+  delete;
+  field ( readonly : update, mandatory : create ) BankCountry, BankInternalID;
+  field ( readonly ) BankNetworkGrouping, IsMarkedForDeletion, BankCategory;
+}

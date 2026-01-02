@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service defiition'
+define service Zservice_df_bank {
+  expose zc_bank_vj;
+}
