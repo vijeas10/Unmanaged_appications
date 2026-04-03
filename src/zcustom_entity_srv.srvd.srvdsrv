@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service defiition'
+define service Zcustom_entity_srv {
+  expose zi_custom_entity_api;
+}

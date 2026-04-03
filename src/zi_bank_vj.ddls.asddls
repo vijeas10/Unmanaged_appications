@@ -1,6 +1,11 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Interafce view for Bank details'
 @Metadata.ignorePropagatedAnnotations: true
+@ObjectModel.usageType: {
+    serviceQuality: #A,
+    sizeCategory: #M,
+    dataClass: #TRANSACTIONAL
+}
 define root view entity zi_bank_vj
   as select from I_Bank_2
 {
@@ -13,4 +18,5 @@ define root view entity zi_bank_vj
       Bank,
       BankBranch,
       BankCategory
+
 }

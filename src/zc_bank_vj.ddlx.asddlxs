@@ -23,6 +23,7 @@ annotate entity zc_bank_vj with
   BankName;
   @UI: { lineItem: [{ position:  40 }],
   identification: [{ position: 40 }] }
+//   @UI.hidden:#(HideFlag)
   BankBranch;
   @UI: { lineItem: [{ position:  50 }],
   identification: [{ position: 50 }] }
@@ -39,5 +40,7 @@ annotate entity zc_bank_vj with
   @UI: { lineItem: [{ position:  90 }],
   identification: [{ position: 90 }] }
   Bank;
+//  @UI.hidden: true
+//  HideFlag;
 
 }

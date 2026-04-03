@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeName: 'Custom Entity API', typeNamePlural: 'Custom Entity API' }
+annotate entity zi_custom_entity_api with
+{
+
+  @UI.lineItem: [{ position: 10, label: 'Temperature' }]
+  temperature;
+  @UI.lineItem: [{ position: 20, label: 'Temperature Unit' }]
+  temperature_u;
+  @UI.lineItem: [{ position: 30, label: 'Wind Speed' }]
+  windspeed;
+  @UI.lineItem: [{ position: 40, label: 'Wind Speed Unit' }]
+  windspeed_u;
+  @UI.lineItem: [{ position: 50, label: 'Time Stamp' }]
+  time;
+  @UI.lineItem: [{ position: 60, label: 'Latitude' }]
+  latitude;
+  @UI.lineItem: [{ position: 70, label: 'Longitude' }]
+  longitude;
+  @UI.lineItem: [{ position: 80, label: 'AI Remark' }]
+  remark;
+
+}

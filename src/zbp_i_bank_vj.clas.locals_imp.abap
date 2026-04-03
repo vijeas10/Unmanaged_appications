@@ -63,13 +63,26 @@ CLASS lhc_zi_bank_vj IMPLEMENTATION.
 MAPPED DATA(wtl_mapped)
 FAILED DATA(wtl_failed)
 REPORTED DATA(wtl_reported).
+    IF wtl_failed IS NOT INITIAL.
+      APPEND VALUE #( %cid = entities[ 1 ]-%cid ) TO failed-zi_bank_vj.
+      APPEND VALUE #( %cid = entities[ 1 ]-%cid
+                      %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error
+                                                    text = 'Creation failed for Bank entity ' )
+                     ) TO reported-zi_bank_vj.
 
-
-*    mapped-zi_bank_vj = CORRESPONDING #( wtl_mapped-bank ).
-
+    ELSE.
+* Add Success Message
+      APPEND VALUE #( %cid = entities[ 1 ]-%cid
+                      %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success
+                                                    text = 'Bank entity created successfully ' )
+                     ) TO reported-zi_bank_vj.
+      mapped-zi_bank_vj = CORRESPONDING #( wtl_mapped-bank ).
+    ENDIF.
   ENDMETHOD.
 
   METHOD update.
+*
+    zbp_i_bank_vj=>wl_test = 'Test'.
 *   Select DB data first
     DATA(wel_updated) = VALUE #( entities[ 1 ]  OPTIONAL ).
     SELECT  SINGLE * FROM zi_bank_vj
@@ -101,6 +114,24 @@ REPORTED DATA(wtl_reported).
 
                   MAPPED DATA(wtl_mapped)
                   FAILED DATA(wtl_failed).
+
+      IF wtl_failed IS NOT INITIAL.
+
+
+        APPEND VALUE #( %tky = entities[ 1 ]-%tky ) TO failed-zi_bank_vj.
+        APPEND VALUE #( %tky = entities[ 1 ]-%tky
+                        %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error
+                                                    text = 'Update failed for Bank entity ' )
+                     ) TO reported-zi_bank_vj.
+
+      ELSE.
+* Add Success Message
+        APPEND VALUE #( %tky = entities[ 1 ]-%tky
+                        %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success
+                                                      text = 'Bank entity updated successfully ' )
+                       ) TO reported-zi_bank_vj.
+        mapped-zi_bank_vj = CORRESPONDING #( wtl_mapped-bank ).
+      ENDIF.
 
     ENDIF.
 
@@ -152,9 +183,11 @@ CLASS lsc_ZI_BANK_VJ IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD cleanup.
+    CLEAR zbp_i_bank_vj=>wl_test.
   ENDMETHOD.
 
   METHOD cleanup_finalize.
+    CLEAR zbp_i_bank_vj=>wl_test.
   ENDMETHOD.
 
 ENDCLASS.
