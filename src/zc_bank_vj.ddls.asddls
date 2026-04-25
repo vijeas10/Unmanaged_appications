@@ -13,7 +13,9 @@ define root view entity zc_bank_vj
               element: 'BankCountry'    }
               }]
   key BankCountry,
+      @ObjectModel.text.element: [ 'BankName' ]
   key BankInternalID,
+      @ObjectModel.text.element: [ 'BankInternalID' ]
       @Consumption.valueHelpDefinition: [{
           entity: {
               name: 'I_Bank_2',

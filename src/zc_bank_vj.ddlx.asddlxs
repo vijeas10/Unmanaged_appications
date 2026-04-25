@@ -14,16 +14,19 @@ annotate entity zc_bank_vj with
   identification: [{ position: 10 }],
   selectionField: [{ position: 10 }] }
   BankCountry;
+  //  @UI.hidden: true
   @UI: { lineItem: [{ position:  20 }],
+         textArrangement: #TEXT_LAST,
   identification: [{ position: 20 }] }
   BankInternalID;
   @UI: { lineItem: [{ position:  30 }],
+         textArrangement: #TEXT_LAST,
   identification: [{ position: 30 }],
   selectionField: [{ position: 20 }] }
   BankName;
   @UI: { lineItem: [{ position:  40 }],
   identification: [{ position: 40 }] }
-//   @UI.hidden:#(HideFlag)
+  //   @UI.hidden:#(HideFlag)
   BankBranch;
   @UI: { lineItem: [{ position:  50 }],
   identification: [{ position: 50 }] }
@@ -40,7 +43,7 @@ annotate entity zc_bank_vj with
   @UI: { lineItem: [{ position:  90 }],
   identification: [{ position: 90 }] }
   Bank;
-//  @UI.hidden: true
-//  HideFlag;
+  //  @UI.hidden: true
+  //  HideFlag;
 
 }
